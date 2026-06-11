@@ -1,0 +1,26 @@
+---
+description: Когда и как использовать dotnet-debug MCP для отладки .NET
+globs: "**/*.cs"
+alwaysApply: false
+---
+
+# Dotnet-debug MCP
+
+Если в Cursor подключён MCP **dotnet-debug** (user-dotnet-debug), его можно использовать для отладки .NET: брейкпоинты, запуск под netcoredbg, стек, переменные, шаги, continue/stop.
+
+## Когда использовать
+
+- Нужно проверить выполнение до брейкпоинта, посмотреть стек или переменные, сделать step over/into/out.
+- Цель — .dll или .exe (собранный проект). Для стабильной отладки **собирай target в Debug**, не Release; в `debug_launch` и `debug_set_breakpoints` указывай путь к **Debug**-сборке (например `bin/Debug/net10.0/App.dll`).
+
+## Типичный сценарий
+
+1. **debug_set_breakpoints** — workspace_path, target_path (путь к .dll/.exe), breakpoints[] (file_path, line; опционально condition).
+2. **debug_launch** — те же workspace_path и target_path; при необходимости **program_args** (массив строк), чтобы программа не выходила сразу (например `["dummy"]` для консольного приложения).
+3. После старта сервер ждёт первого события `stopped` (до 5 с). Дальше: **debug_stack_trace**, **debug_variables** (переменные через DAP scopes), **debug_step_over** / **debug_step_into** / **debug_step_out**, **debug_continue**, в конце **debug_stop**.
+
+Переменные запрашиваются через scopes (scopes по frameId → variables по variablesReference); при ошибке используется fallback на variables(frameId).
+
+## Требования
+
+- Установленный netcoredbg (путь в `NETCOREDBG_PATH` или аргумент **netcoredbg_path**).

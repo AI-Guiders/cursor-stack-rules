@@ -1,0 +1,17 @@
+# Python MCP (user-python)
+
+Если подключён MCP **python** (`python-mcp`), использовать его вместо ReadLints, угадывания и сырого grep.
+
+**Когда использовать:**
+- Lint и типы — `python_get_diagnostics` (`project_root`, опционально `file_path`). Не ReadLints и не парсить вывод ruff/pyright вручную.
+- Структура файла — `python_get_document_symbols` (`file_path`).
+- Объявление символа — `python_go_to_definition` (`file_path`, line, column; опционально `project_root`). Engine: jedi.
+- Все вхождения — `python_find_usages` (те же координаты). Перед rename — обязательно.
+- Граф импортов модулей — `python_get_import_graph` (`project_root`, опционально `module` или `file_path`). На больших репо — **`summary_only: true`**.
+- Форматирование — `python_format` (`project_root`, опционально `file_path`; `check_only: true` для проверки).
+- Тесты — `python_run_tests` (`project_root`). После существенных правок `.py`.
+- Проектные verify-скрипты — `python_run_script` (`project_root`, `script_path`). Не хардкодить product-tools в python-mcp.
+
+`project_root` — каталог с `pyproject.toml` / корень пакета. Строки и столбцы — **1-based**.
+
+**Не смешивать:** отладка — только **python-debug** (`debug_*`), не python-mcp.
