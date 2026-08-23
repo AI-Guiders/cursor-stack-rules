@@ -11,5 +11,6 @@
 | `rules/global/git-logical-commits.mdc` | — | workflow |
 | `rules/global/integrity-core-immutable.mdc` | agent-notes KB | [agent-notes](https://github.com/AI-Guiders/agent-notes) `META/cursor-rule-integrity-post-example.md` |
 | `rules/stack/refactor-clean-csharp.mdc` | — | C# workspace convention |
+| `rules/stack/cursor-chat-inbox.mdc` | — | [agent-notes](https://github.com/KarataevDmitry/personal-knowledge-base) `operator-guides/playbook-cursor-chat-inbox-v1.md` |
 
 **Product rules (not in this repo):** e.g. `casa-dialogue-emergence-gate` → `casa-ontology-payload` / workspace `.cursor/rules/`.

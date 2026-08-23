@@ -1,0 +1,23 @@
+---
+description: Inbox vs work Cursor chats — session-close, chat-index, token discipline (Composer 2.5)
+globs:
+alwaysApply: false
+---
+
+# Cursor chat inbox (v1)
+
+**Канон:** `agent-notes` → `knowledge/personal/operator-guides/playbook-cursor-chat-inbox-v1.md` + **`chat-index.md`**.
+
+## Триггеры
+
+- Сообщение начинается с **`INBOX:`** — только capture (index/TM), без кода и тяжёлых tool calls.
+- Сообщение начинается с **`WORK:`** — один leaf; идеи в сторону → предложить inbox.
+- Оператор пишет **`/session-close`** — summary ≤5 bullet, обновить `chat-index.md`, ответ компактно.
+
+## Лимит контекста
+
+Если обсуждается утилизация токенов или Conversation явно раздута: предложить session-close при **Conversation >70K** (см. Context Usage). Не предлагать «сменить модель» — оператор уже на Composer 2.5.
+
+## После закрытого leaf
+
+Одна строка в `chat-index.md` (`done` + commit/PR). Следующий шаг — **новый чат** с коротким seed, не продолжение простыни.
