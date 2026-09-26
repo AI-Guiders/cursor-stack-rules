@@ -4,11 +4,11 @@ globs:
 alwaysApply: false
 ---
 
-# Cursor chat inbox (v1)
+# Cursor chat inbox
 
-**Канон:** `agent-notes` → `knowledge/personal/operator-guides/playbook-cursor-chat-inbox-v1.md` + **`chat-index.md`**.
+**Канон:** `agent-notes` → `knowledge/personal/operator-guides/playbook-cursor-chat-inbox.md` + **`chat-index.md`**.
 
-**UoW** (Unit of Work) — одна порция работы в work-чате; прежнее имя в этом протоколе — «leaf». Не путать с «open leaf» в репозиториях (DEVLOG/MODEL).
+**UoW** (Unit of Work) — одна согласованная порция работы (work-чат, DEVLOG §3, sim/GPU-срез). Устаревшее имя: «leaf».
 
 ## Триггеры
 
