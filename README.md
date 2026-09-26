@@ -21,17 +21,19 @@ Public **Cursor rules** for the [AI-Guiders](https://github.com/AI-Guiders) agen
 Copy or symlink files from `rules/global/` and `rules/stack/` into your project `.cursor/rules/`.
 
 ```powershell
-# example: from repo root
-$dest = "D:\path\to\workspace\.cursor\rules"
-New-Item -ItemType Directory -Force -Path $dest | Out-Null
-Copy-Item rules\global\*.mdc, rules\stack\*.mdc $dest
+# from cursor-stack-rules repo
+./scripts/sync-workspace-rules.ps1 -WorkspaceRoot "D:\path\to\PersonalCursorFolder"
 ```
+
+Manual copy still works: `rules/global/*.mdc` + `rules/stack/*.mdc` → workspace `.cursor/rules/`.
 
 Optional: add this repo as a git submodule under `Financial/software/open/cursor-stack-rules` and run the copy after `git pull`.
 
 ### User Rules (global in Cursor)
 
-Copy bodies from `user-rules/*.md` into **Settings → Rules → User Rules**. Cursor does not subscribe to git for user rules — re-copy when this repo tags a release.
+Copy bodies from `user-rules/*.md` into **Settings → Rules → User Rules** (or **one** team bundle). Cursor does not subscribe to git — re-copy when this repo tags a release.
+
+**Team Rules:** do not attach the same `AGENTS` / stack bundle multiple times; workspace `.cursor/rules/` already holds stack `.mdc` after `sync-workspace-rules.ps1`. Product rules (CASA, CDP habitat) stay in the product workspace only — not in team-wide duplicates.
 
 ## Sync with MCP repos
 
