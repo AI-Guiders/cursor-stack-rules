@@ -13,6 +13,7 @@ Public **Cursor rules** for the [AI-Guiders](https://github.com/AI-Guiders) agen
 | `user-rules/` | Same content **without** `.mdc` frontmatter — paste into **Cursor → User Rules** |
 | `workspace-snippets/` | Pointers only; product-specific rules stay elsewhere |
 | `MANIFEST.md` | MCP server id ↔ rule file ↔ upstream repo |
+| `docs/CURSOR-HABITAT.md` | Cursor vs DSH vs Team Rules — без автоподбора чужих AGENTS |
 
 ## Install
 
